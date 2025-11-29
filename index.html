@@ -1,0 +1,1686 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="WINCメンバー・元メンバー向け就活支援イベント。OB・OG・内定者・現役就活生が一堂に会し、就職活動のリアルな情報と経験を共有します。"
+    />
+    <title>WINC就活支援イベント 2025 | メンバー・元メンバー限定</title>
+    <style>
+      /* ==========================================================================
+       デザインシステム: CSS変数
+       ========================================================================== */
+      :root {
+        /* カラーパレット */
+        --primary-500: #1f5fff;
+        --primary-600: #1747d1;
+        --primary-50: #e8efff;
+
+        --accent-500: #00b894;
+        --accent-600: #009875;
+
+        --gray-900: #1a1a1a;
+        --gray-700: #404040;
+        --gray-500: #737373;
+        --gray-300: #d4d4d4;
+        --gray-200: #e5e5e5;
+        --gray-100: #f5f5f5;
+        --gray-50: #fafafa;
+
+        --bg-surface: #ffffff;
+        --bg-page: #f5f7fb;
+        --warning-bg: #fffbeb;
+        --warning-border: #fbbf24;
+
+        /* タイポグラフィ */
+        --text-xs: 12px;
+        --text-sm: 14px;
+        --text-base: 16px;
+        --text-lg: 18px;
+        --text-xl: 20px;
+        --text-2xl: 24px;
+        --text-3xl: 30px;
+        --text-4xl: 36px;
+
+        --leading-tight: 1.4;
+        --leading-normal: 1.6;
+        --leading-relaxed: 1.8;
+
+        --tracking-tight: -0.02em;
+        --tracking-normal: 0;
+        --tracking-wide: 0.05em;
+
+        /* スペーシング */
+        --space-1: 4px;
+        --space-2: 8px;
+        --space-3: 12px;
+        --space-4: 16px;
+        --space-5: 20px;
+        --space-6: 24px;
+        --space-8: 32px;
+        --space-10: 40px;
+        --space-12: 48px;
+        --space-16: 64px;
+        --space-20: 80px;
+        --space-24: 96px;
+
+        --section-gap-mobile: var(--space-12);
+        --section-gap-desktop: var(--space-20);
+
+        /* シャドウ */
+        --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+        --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.07);
+        --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+        --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.15);
+        --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.08);
+        --shadow-card-hover: 0 8px 16px rgba(0, 0, 0, 0.12);
+
+        /* Border Radius */
+        --radius-sm: 4px;
+        --radius-md: 8px;
+        --radius-lg: 12px;
+        --radius-xl: 16px;
+        --radius-full: 9999px;
+      }
+
+      /* ==========================================================================
+       リセット & ベーススタイル
+       ========================================================================== */
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: "Hiragino Sans", "Hiragino Kaku Gothic ProN",
+          "Noto Sans JP", "Yu Gothic", "Meiryo", sans-serif;
+        font-size: var(--text-base);
+        line-height: var(--leading-normal);
+        color: var(--gray-700);
+        background: var(--bg-page);
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        color: var(--gray-900);
+        line-height: var(--leading-tight);
+        font-weight: 700;
+      }
+
+      a {
+        color: var(--primary-500);
+        text-decoration: none;
+        transition: color 0.2s ease;
+      }
+
+      a:hover {
+        color: var(--primary-600);
+      }
+
+      img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+      }
+
+      /* ==========================================================================
+       レイアウト
+       ========================================================================== */
+      .container {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 var(--space-4);
+      }
+
+      @media (min-width: 640px) {
+        .container {
+          padding: 0 var(--space-6);
+        }
+      }
+
+      @media (min-width: 1024px) {
+        .container {
+          padding: 0 var(--space-8);
+        }
+      }
+
+      .section {
+        padding: var(--section-gap-mobile) 0;
+      }
+
+      @media (min-width: 1024px) {
+        .section {
+          padding: var(--section-gap-desktop) 0;
+        }
+      }
+
+      /* セクション背景バリエーション */
+      .section--white {
+        background: var(--bg-surface);
+      }
+
+      .section--gray {
+        background: var(--bg-page);
+      }
+
+      /* ==========================================================================
+       ヘッダー（固定ナビゲーション）
+       ========================================================================== */
+      .header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(8px);
+        border-bottom: 1px solid var(--gray-200);
+        z-index: 1000;
+        transition: box-shadow 0.3s ease;
+      }
+
+      .header.scrolled {
+        box-shadow: var(--shadow-md);
+      }
+
+      .header__inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: var(--space-4) 0;
+      }
+
+      .header__logo {
+        font-size: var(--text-lg);
+        font-weight: 700;
+        color: var(--primary-500);
+        letter-spacing: var(--tracking-wide);
+        text-transform: uppercase;
+      }
+
+      /* デスクトップナビゲーション */
+      .nav {
+        display: none;
+      }
+
+      @media (min-width: 768px) {
+        .nav {
+          display: flex;
+          gap: var(--space-6);
+        }
+      }
+
+      .nav__link {
+        color: var(--gray-700);
+        font-size: var(--text-base);
+        font-weight: 500;
+        padding: var(--space-2) var(--space-3);
+        border-radius: var(--radius-sm);
+        transition: background 0.2s ease, color 0.2s ease;
+      }
+
+      .nav__link:hover {
+        background: var(--gray-100);
+        color: var(--primary-500);
+      }
+
+      /* モバイルメニューボタン */
+      .menu-toggle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 44px;
+        height: 44px;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        padding: 0;
+      }
+
+      @media (min-width: 768px) {
+        .menu-toggle {
+          display: none;
+        }
+      }
+
+      .menu-toggle__icon {
+        width: 24px;
+        height: 2px;
+        background: var(--gray-700);
+        position: relative;
+        transition: background 0.3s ease;
+      }
+
+      .menu-toggle__icon::before,
+      .menu-toggle__icon::after {
+        content: "";
+        position: absolute;
+        width: 24px;
+        height: 2px;
+        background: var(--gray-700);
+        left: 0;
+        transition: transform 0.3s ease;
+      }
+
+      .menu-toggle__icon::before {
+        top: -8px;
+      }
+
+      .menu-toggle__icon::after {
+        bottom: -8px;
+      }
+
+      .menu-toggle.active .menu-toggle__icon {
+        background: transparent;
+      }
+
+      .menu-toggle.active .menu-toggle__icon::before {
+        transform: translateY(8px) rotate(45deg);
+      }
+
+      .menu-toggle.active .menu-toggle__icon::after {
+        transform: translateY(-8px) rotate(-45deg);
+      }
+
+      /* モバイルメニュー */
+      .mobile-menu {
+        display: none;
+        position: fixed;
+        top: 73px;
+        left: 0;
+        right: 0;
+        background: var(--bg-surface);
+        border-bottom: 1px solid var(--gray-200);
+        box-shadow: var(--shadow-lg);
+        z-index: 999;
+      }
+
+      .mobile-menu.active {
+        display: block;
+      }
+
+      .mobile-menu__nav {
+        display: flex;
+        flex-direction: column;
+        padding: var(--space-4);
+      }
+
+      .mobile-menu__link {
+        color: var(--gray-700);
+        font-size: var(--text-lg);
+        font-weight: 500;
+        padding: var(--space-4);
+        border-radius: var(--radius-md);
+        transition: background 0.2s ease;
+      }
+
+      .mobile-menu__link:hover {
+        background: var(--gray-100);
+      }
+
+      /* メインコンテンツのマージン（固定ヘッダー分） */
+      .main {
+        margin-top: 73px;
+      }
+
+      /* ==========================================================================
+       コンポーネント: ボタン
+       ========================================================================== */
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: var(--space-3) var(--space-6);
+        font-size: var(--text-base);
+        font-weight: 600;
+        border-radius: var(--radius-full);
+        border: none;
+        cursor: pointer;
+        text-align: center;
+        transition: all 0.2s ease;
+        text-decoration: none;
+      }
+
+      .btn--primary {
+        background: var(--primary-500);
+        color: white;
+        box-shadow: 0 4px 12px rgba(31, 95, 255, 0.3);
+      }
+
+      .btn--primary:hover {
+        background: var(--primary-600);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 16px rgba(31, 95, 255, 0.4);
+        color: white;
+      }
+
+      .btn--primary:active {
+        transform: translateY(0);
+      }
+
+      .btn--secondary {
+        background: white;
+        color: var(--primary-500);
+        border: 2px solid white;
+      }
+
+      .btn--secondary:hover {
+        background: var(--gray-100);
+        color: var(--primary-600);
+        border-color: var(--gray-100);
+      }
+
+      .btn--large {
+        padding: var(--space-4) var(--space-8);
+        font-size: var(--text-lg);
+      }
+
+      .btn--full {
+        width: 100%;
+      }
+
+      @media (max-width: 639px) {
+        .btn--mobile-full {
+          width: 100%;
+        }
+
+        .btn--mobile-large {
+          padding: var(--space-4) var(--space-6);
+          font-size: var(--text-lg);
+        }
+      }
+
+      /* ==========================================================================
+       コンポーネント: カード
+       ========================================================================== */
+      .card {
+        background: var(--bg-surface);
+        border-radius: var(--radius-lg);
+        padding: var(--space-6);
+        box-shadow: var(--shadow-card);
+        border: 1px solid var(--gray-200);
+        transition: box-shadow 0.3s ease, transform 0.3s ease;
+      }
+
+      .card--hoverable:hover {
+        box-shadow: var(--shadow-card-hover);
+        transform: translateY(-4px);
+      }
+
+      .card--highlight {
+        background: var(--primary-50);
+        border: 2px solid var(--primary-500);
+      }
+
+      /* ==========================================================================
+       コンポーネント: バッジ
+       ========================================================================== */
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--space-2);
+        padding: var(--space-1) var(--space-3);
+        background: var(--primary-50);
+        color: var(--primary-500);
+        border-radius: var(--radius-full);
+        font-size: var(--text-xs);
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: var(--tracking-wide);
+      }
+
+      .badge__dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--accent-500);
+      }
+
+      /* ==========================================================================
+       セクション: Hero
+       ========================================================================== */
+      .hero {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: var(--space-20) 0 var(--space-16);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="2" fill="white" opacity="0.1"/></svg>');
+        opacity: 0.3;
+      }
+
+      .hero__container {
+        position: relative;
+        z-index: 1;
+      }
+
+      .hero__badge {
+        margin-bottom: var(--space-4);
+        background: rgba(255, 255, 255, 0.2);
+        color: white;
+        backdrop-filter: blur(8px);
+      }
+
+      .hero__title {
+        font-size: var(--text-3xl);
+        margin-bottom: var(--space-4);
+        color: white;
+      }
+
+      @media (min-width: 768px) {
+        .hero__title {
+          font-size: var(--text-4xl);
+        }
+      }
+
+      .hero__subtitle {
+        font-size: var(--text-lg);
+        margin-bottom: var(--space-8);
+        opacity: 0.95;
+        line-height: var(--leading-relaxed);
+      }
+
+      .hero__info {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-3);
+        margin-bottom: var(--space-8);
+      }
+
+      .hero__info-item {
+        display: flex;
+        align-items: center;
+        gap: var(--space-3);
+        font-size: var(--text-lg);
+      }
+
+      .hero__info-icon {
+        font-size: var(--text-2xl);
+      }
+
+      .hero__actions {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-3);
+        margin-bottom: var(--space-12);
+      }
+
+      @media (min-width: 640px) {
+        .hero__actions {
+          flex-direction: row;
+        }
+      }
+
+      .hero__value {
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(8px);
+        border-radius: var(--radius-lg);
+        padding: var(--space-6);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+
+      .hero__value-title {
+        font-size: var(--text-lg);
+        font-weight: 600;
+        margin-bottom: var(--space-4);
+        color: white;
+      }
+
+      .hero__value-list {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-2);
+      }
+
+      .hero__value-item {
+        display: flex;
+        align-items: flex-start;
+        gap: var(--space-2);
+        font-size: var(--text-base);
+      }
+
+      .hero__value-item::before {
+        content: "✓";
+        color: var(--accent-500);
+        font-weight: bold;
+        font-size: var(--text-lg);
+      }
+
+      /* ==========================================================================
+       セクション: イベント概要
+       ========================================================================== */
+      .section__header {
+        text-align: center;
+        margin-bottom: var(--space-12);
+      }
+
+      .section__title {
+        font-size: var(--text-2xl);
+        margin-bottom: var(--space-3);
+      }
+
+      @media (min-width: 768px) {
+        .section__title {
+          font-size: var(--text-3xl);
+        }
+      }
+
+      .section__subtitle {
+        font-size: var(--text-lg);
+        color: var(--gray-500);
+      }
+
+      .benefits {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: var(--space-6);
+      }
+
+      @media (min-width: 640px) {
+        .benefits {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (min-width: 1024px) {
+        .benefits {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+
+      .benefit {
+        text-align: center;
+      }
+
+      .benefit__icon {
+        font-size: 48px;
+        margin-bottom: var(--space-4);
+      }
+
+      .benefit__title {
+        font-size: var(--text-xl);
+        font-weight: 600;
+        margin-bottom: var(--space-2);
+        color: var(--gray-900);
+      }
+
+      .benefit__desc {
+        font-size: var(--text-base);
+        color: var(--gray-500);
+        line-height: var(--leading-relaxed);
+      }
+
+      /* ==========================================================================
+       セクション: 対象者
+       ========================================================================== */
+      .target__main {
+        margin-bottom: var(--space-8);
+      }
+
+      .target__card {
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      .target__card-header {
+        display: flex;
+        align-items: center;
+        gap: var(--space-3);
+        margin-bottom: var(--space-4);
+      }
+
+      .target__card-icon {
+        font-size: 32px;
+      }
+
+      .target__card-title {
+        font-size: var(--text-2xl);
+        font-weight: 700;
+        color: var(--primary-500);
+      }
+
+      .target__card-subtitle {
+        font-size: var(--text-lg);
+        color: var(--gray-700);
+        margin-bottom: var(--space-4);
+      }
+
+      .target__card-cta {
+        margin-top: var(--space-6);
+      }
+
+      .target__others {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .target__others-title {
+        font-size: var(--text-xl);
+        font-weight: 600;
+        margin-bottom: var(--space-4);
+        text-align: center;
+        color: var(--gray-700);
+      }
+
+      .target__list {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: var(--space-3);
+        list-style: none;
+      }
+
+      @media (min-width: 768px) {
+        .target__list {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      .target__list-item {
+        display: flex;
+        align-items: flex-start;
+        gap: var(--space-2);
+        padding: var(--space-3);
+        background: var(--gray-50);
+        border-radius: var(--radius-md);
+      }
+
+      .target__list-item::before {
+        content: "•";
+        color: var(--primary-500);
+        font-weight: bold;
+        font-size: var(--text-xl);
+      }
+
+      /* ==========================================================================
+       セクション: タイムテーブル
+       ========================================================================== */
+      .timetable {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-4);
+      }
+
+      .timetable__item {
+        background: var(--bg-surface);
+        border-radius: var(--radius-lg);
+        padding: var(--space-5);
+        border-left: 4px solid var(--primary-500);
+        box-shadow: var(--shadow-card);
+      }
+
+      .timetable__time {
+        font-size: var(--text-lg);
+        font-weight: 700;
+        color: var(--primary-500);
+        margin-bottom: var(--space-2);
+      }
+
+      .timetable__title {
+        font-size: var(--text-xl);
+        font-weight: 600;
+        margin-bottom: var(--space-3);
+        color: var(--gray-900);
+        display: flex;
+        align-items: center;
+        gap: var(--space-2);
+      }
+
+      .timetable__icon {
+        font-size: var(--text-2xl);
+      }
+
+      .timetable__details {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+      }
+
+      .timetable__details.active {
+        max-height: 1000px;
+      }
+
+      .timetable__list {
+        list-style: none;
+        margin-top: var(--space-3);
+        padding-left: var(--space-4);
+        border-left: 2px solid var(--gray-200);
+      }
+
+      .timetable__list-item {
+        margin-bottom: var(--space-2);
+        color: var(--gray-700);
+        font-size: var(--text-base);
+      }
+
+      .timetable__toggle {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--space-2);
+        color: var(--primary-500);
+        font-size: var(--text-sm);
+        font-weight: 600;
+        cursor: pointer;
+        margin-top: var(--space-3);
+        background: transparent;
+        border: none;
+        padding: 0;
+      }
+
+      .timetable__toggle:hover {
+        color: var(--primary-600);
+      }
+
+      /* ==========================================================================
+       セクション: 開催情報
+       ========================================================================== */
+      .info-list {
+        max-width: 800px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-6);
+      }
+
+      .info-item {
+        background: var(--bg-surface);
+        padding: var(--space-5);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-card);
+      }
+
+      .info-item__header {
+        display: flex;
+        align-items: center;
+        gap: var(--space-3);
+        margin-bottom: var(--space-3);
+      }
+
+      .info-item__icon {
+        font-size: var(--text-3xl);
+      }
+
+      .info-item__label {
+        font-size: var(--text-xl);
+        font-weight: 600;
+        color: var(--gray-900);
+      }
+
+      .info-item__content {
+        font-size: var(--text-lg);
+        color: var(--gray-700);
+        line-height: var(--leading-relaxed);
+      }
+
+      .info-item__link {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--space-2);
+        margin-top: var(--space-3);
+        color: var(--primary-500);
+        font-weight: 500;
+      }
+
+      .info-item__link:hover {
+        text-decoration: underline;
+      }
+
+      /* ==========================================================================
+       セクション: FAQ
+       ========================================================================== */
+      .faq {
+        max-width: 800px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-4);
+      }
+
+      .faq__item {
+        background: var(--bg-surface);
+        border-radius: var(--radius-lg);
+        overflow: hidden;
+        box-shadow: var(--shadow-card);
+      }
+
+      .faq__question {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: var(--space-5);
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        text-align: left;
+        font-size: var(--text-lg);
+        font-weight: 600;
+        color: var(--gray-900);
+        transition: background 0.2s ease;
+      }
+
+      .faq__question:hover {
+        background: var(--gray-50);
+      }
+
+      .faq__question-icon {
+        font-size: var(--text-xl);
+        color: var(--primary-500);
+        transition: transform 0.3s ease;
+      }
+
+      .faq__question.active .faq__question-icon {
+        transform: rotate(180deg);
+      }
+
+      .faq__answer {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+      }
+
+      .faq__answer.active {
+        max-height: 500px;
+      }
+
+      .faq__answer-content {
+        padding: 0 var(--space-5) var(--space-5);
+        color: var(--gray-700);
+        font-size: var(--text-base);
+        line-height: var(--leading-relaxed);
+      }
+
+      /* ==========================================================================
+       セクション: 注意事項
+       ========================================================================== */
+      .notice {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .notice__box {
+        background: var(--warning-bg);
+        border: 2px solid var(--warning-border);
+        border-radius: var(--radius-lg);
+        padding: var(--space-6);
+      }
+
+      .notice__title {
+        display: flex;
+        align-items: center;
+        gap: var(--space-2);
+        font-size: var(--text-xl);
+        font-weight: 600;
+        margin-bottom: var(--space-4);
+        color: var(--gray-900);
+      }
+
+      .notice__list {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-3);
+      }
+
+      .notice__list-item {
+        display: block;
+        font-size: var(--text-base);
+        line-height: var(--leading-relaxed);
+        padding-left: var(--space-4);
+        position: relative;
+      }
+
+      .notice__list-item::before {
+        content: "•";
+        position: absolute;
+        left: 0;
+        color: var(--warning-border);
+        font-weight: bold;
+      }
+
+      .notice__list-item strong {
+        color: var(--gray-900);
+      }
+
+      /* ==========================================================================
+       セクション: CTA
+       ========================================================================== */
+      .cta {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        text-align: center;
+      }
+
+      .cta__content {
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      .cta__title {
+        font-size: var(--text-3xl);
+        margin-bottom: var(--space-4);
+        color: white;
+      }
+
+      .cta__subtitle {
+        font-size: var(--text-lg);
+        margin-bottom: var(--space-8);
+        opacity: 0.95;
+      }
+
+      .cta__button {
+        background: white;
+        color: var(--primary-500);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      }
+
+      .cta__button:hover {
+        background: var(--gray-50);
+        color: var(--primary-600);
+        transform: translateY(-2px);
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+      }
+
+      .cta__contact {
+        margin-top: var(--space-6);
+        font-size: var(--text-base);
+        opacity: 0.9;
+      }
+
+      .cta__contact a {
+        color: white;
+        text-decoration: underline;
+      }
+
+      /* ==========================================================================
+       フッター
+       ========================================================================== */
+      .footer {
+        background: var(--gray-900);
+        color: var(--gray-300);
+        padding: var(--space-12) 0 var(--space-6);
+      }
+
+      .footer__content {
+        text-align: center;
+      }
+
+      .footer__title {
+        font-size: var(--text-xl);
+        font-weight: 600;
+        margin-bottom: var(--space-4);
+        color: white;
+      }
+
+      .footer__links {
+        display: flex;
+        justify-content: center;
+        gap: var(--space-6);
+        margin-bottom: var(--space-6);
+        flex-wrap: wrap;
+      }
+
+      .footer__link {
+        color: var(--gray-300);
+        font-size: var(--text-sm);
+      }
+
+      .footer__link:hover {
+        color: white;
+      }
+
+      .footer__copyright {
+        font-size: var(--text-sm);
+        color: var(--gray-500);
+      }
+
+      /* ==========================================================================
+       ユーティリティ
+       ========================================================================== */
+      .text-center {
+        text-align: center;
+      }
+
+      .mb-4 {
+        margin-bottom: var(--space-4);
+      }
+
+      .mb-6 {
+        margin-bottom: var(--space-6);
+      }
+
+      /* アクセシビリティ: アニメーション無効化 */
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ヘッダー -->
+    <header class="header" id="header">
+      <div class="container">
+        <div class="header__inner">
+          <a href="#top" class="header__logo">WINC</a>
+
+          <!-- デスクトップナビゲーション -->
+          <nav class="nav">
+            <a href="#about" class="nav__link">概要</a>
+            <a href="#target" class="nav__link">対象者</a>
+            <a href="#timetable" class="nav__link">スケジュール</a>
+            <a href="#info" class="nav__link">開催情報</a>
+            <a href="#faq" class="nav__link">FAQ</a>
+            <a href="#apply" class="nav__link">申込</a>
+          </nav>
+
+          <!-- ハンバーガーメニューボタン -->
+          <button
+            class="menu-toggle"
+            id="menuToggle"
+            aria-label="メニューを開く"
+          >
+            <span class="menu-toggle__icon"></span>
+          </button>
+        </div>
+      </div>
+
+      <!-- モバイルメニュー -->
+      <div class="mobile-menu" id="mobileMenu">
+        <nav class="mobile-menu__nav">
+          <a href="#about" class="mobile-menu__link">概要</a>
+          <a href="#target" class="mobile-menu__link">対象者</a>
+          <a href="#timetable" class="mobile-menu__link">スケジュール</a>
+          <a href="#info" class="mobile-menu__link">開催情報</a>
+          <a href="#faq" class="mobile-menu__link">FAQ</a>
+          <a href="#apply" class="mobile-menu__link">申込</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- メインコンテンツ -->
+    <main class="main">
+      <!-- Hero セクション -->
+      <section class="hero" id="top">
+        <div class="container hero__container">
+          <div class="hero__badge badge">
+            <span class="badge__dot"></span>
+            WINCメンバー・元メンバー限定
+          </div>
+
+          <h1 class="hero__title">WINC就活支援イベント 2025</h1>
+
+          <p class="hero__subtitle">
+            OB・OG・内定者・現役就活生が一堂に会し、就職活動のリアルな情報と経験を共有するWINC限定のキャリアイベントです。
+          </p>
+
+          <div class="hero__info">
+            <div class="hero__info-item">
+              <span class="hero__info-icon">📅</span>
+              <span>11/30（日） 15:00-19:30</span>
+            </div>
+            <div class="hero__info-item">
+              <span class="hero__info-icon">📍</span>
+              <span>LAMP（ランプ）五反田駅西口店</span>
+            </div>
+          </div>
+
+          <div class="hero__actions">
+            <a
+              href="https://forms.gle/hp56HarEcAepX5vx5"
+              target="_blank"
+              class="btn btn--primary btn--large btn--mobile-full"
+            >
+              今すぐ申し込む
+            </a>
+            <a
+              href="#timetable"
+              class="btn btn--secondary btn--large btn--mobile-full"
+            >
+              タイムテーブルを見る
+            </a>
+          </div>
+
+          <div class="hero__value">
+            <h2 class="hero__value-title">イベントのポイント</h2>
+            <ul class="hero__value-list">
+              <li class="hero__value-item">
+                内定者・OB/OGによる就活体験・アドバイス
+              </li>
+              <li class="hero__value-item">
+                IT・金融・コンサル・官僚・研究職など幅広い分野に対応
+              </li>
+              <li class="hero__value-item">
+                サマーインターン・カジュアル面談の情報共有
+              </li>
+              <li class="hero__value-item">
+                国家資格保持キャリアコンサルタントによる個別相談
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- イベント概要セクション -->
+      <section class="section section--white" id="about">
+        <div class="container">
+          <div class="section__header">
+            <h2 class="section__title">このイベントで得られること</h2>
+            <p class="section__subtitle">
+              就活の成功に必要な情報とサポートがすべて揃っています
+            </p>
+          </div>
+
+          <div class="benefits">
+            <div class="benefit card">
+              <div class="benefit__icon">💼</div>
+              <h3 class="benefit__title">内定者のリアル体験</h3>
+              <p class="benefit__desc">
+                具体的な選考対策や面接のコツ、企業選びの軸など、実際に内定を獲得した先輩から直接聞けます。
+              </p>
+            </div>
+
+            <div class="benefit card">
+              <div class="benefit__icon">🌐</div>
+              <h3 class="benefit__title">業界を超えた情報交換</h3>
+              <p class="benefit__desc">
+                IT・金融・コンサル・官僚・研究職など、多様な業界の情報が一度に集まる貴重な機会です。
+              </p>
+            </div>
+
+            <div class="benefit card">
+              <div class="benefit__icon">🎯</div>
+              <h3 class="benefit__title">プロのキャリア相談</h3>
+              <p class="benefit__desc">
+                国家資格を保持するキャリアコンサルタントが、あなたのキャリアプランを一緒に考えます。
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 対象者セクション -->
+      <section class="section section--gray" id="target">
+        <div class="container">
+          <div class="section__header">
+            <h2 class="section__title">こんな方におすすめ</h2>
+          </div>
+
+          <div class="target__main">
+            <div class="target__card card card--highlight">
+              <div class="target__card-header">
+                <span class="target__card-icon">🎯</span>
+                <h3 class="target__card-title">就活中の学生</h3>
+              </div>
+              <p class="target__card-subtitle">学部3・4年生 / 修士1・2年生</p>
+              <p class="benefit__desc">
+                これから本格的に就活を進める方や、すでにインターン・本選考に挑戦している方。OB・OGや内定者から、選考対策や企業選びの軸など、リアルな情報を得ることができます。
+              </p>
+              <div class="target__card-cta">
+                <a href="#apply" class="btn btn--primary btn--full"
+                  >該当する方はこちら →</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <div class="target__others">
+            <h3 class="target__others-title">その他、以下の方も大歓迎です！</h3>
+            <ul class="target__list">
+              <li class="target__list-item">
+                <span
+                  ><strong>学部低学年（1・2年生）</strong> -
+                  業界研究・見学目的でも大歓迎</span
+                >
+              </li>
+              <li class="target__list-item">
+                <span
+                  ><strong>転職を検討中の社会人</strong> -
+                  キャリアチェンジの相談も可能</span
+                >
+              </li>
+              <li class="target__list-item">
+                <span>OB/OG・社会人（自社紹介・アドバイス提供）</span>
+              </li>
+              <li class="target__list-item">
+                <span>内定者（経験シェア・後輩サポート）</span>
+              </li>
+              <li class="target__list-item">
+                <span>元メンバー（現役でなくても参加OK）</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- タイムテーブルセクション -->
+      <section class="section section--white" id="timetable">
+        <div class="container">
+          <div class="section__header">
+            <h2 class="section__title">当日のスケジュール</h2>
+            <p class="section__subtitle">
+              プレゼンテーション＋交流会形式で進行します
+            </p>
+          </div>
+
+          <div class="timetable">
+            <div
+              class="timetable__item"
+              style="background: #fff8e5; border-left-color: #fbbf24"
+            >
+              <div class="timetable__time">15:00 - 15:30</div>
+              <h3 class="timetable__title">
+                <span class="timetable__icon">🚪</span>
+                受付
+              </h3>
+              <p
+                style="
+                  color: #d97706;
+                  font-weight: 600;
+                  margin-top: 8px;
+                  font-size: 15px;
+                "
+              >
+                ⚠️ 15:30までに必ず受付をお願いします
+              </p>
+            </div>
+
+            <div class="timetable__item">
+              <div class="timetable__time">15:30 - 15:35</div>
+              <h3 class="timetable__title">
+                <span class="timetable__icon">👋</span>
+                開会式およびイベント説明
+              </h3>
+            </div>
+
+            <div class="timetable__item">
+              <div class="timetable__time">15:35 - 17:55</div>
+              <h3 class="timetable__title">
+                <span class="timetable__icon">🎤</span>
+                講演セッション
+              </h3>
+              <button class="timetable__toggle" onclick="toggleDetails(this)">
+                詳細を見る ▼
+              </button>
+              <div class="timetable__details">
+                <ul class="timetable__list">
+                  <li class="timetable__list-item">
+                    15:35-15:40 休学して働いて見えた就活のリアル -
+                    犬丸聖矢（現役低学年生）
+                  </li>
+                  <li class="timetable__list-item">
+                    15:40-15:50 大学院進学というキャリアの選択肢 -
+                    志貴健太（就活生）
+                  </li>
+                  <li class="timetable__list-item">
+                    15:50-16:00 講演 - 宮崎飛羽（就活生）
+                  </li>
+                  <li class="timetable__list-item">
+                    16:00-16:15 講演 - 藤田開（内定者）
+                  </li>
+                  <li class="timetable__list-item">
+                    16:15-16:35 事業企画って楽しいの？ - 濱田香菜子（OG）
+                  </li>
+                  <li class="timetable__list-item">16:35-16:45 休憩</li>
+                  <li class="timetable__list-item">
+                    16:45-17:05 講演 - 國正慧（OB）
+                  </li>
+                  <li class="timetable__list-item">
+                    17:05-17:25 講演 - 鈴木風真（OB）
+                  </li>
+                  <li class="timetable__list-item">
+                    17:25-17:55
+                    キャリアのプロが教える就活を通して人生を豊かにする方法 -
+                    西尾太一（キャリアコンサルタント）
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="timetable__item">
+              <div class="timetable__time">18:00 - 19:00</div>
+              <h3 class="timetable__title">
+                <span class="timetable__icon">🤝</span>
+                交流会（自由交流・個別相談）
+              </h3>
+            </div>
+
+            <div class="timetable__item">
+              <div class="timetable__time">19:00 - 19:30</div>
+              <h3 class="timetable__title">
+                <span class="timetable__icon">🎬</span>
+                閉会式・清掃・撤収
+              </h3>
+            </div>
+
+            <div class="timetable__item">
+              <div class="timetable__time">19:30 -</div>
+              <h3 class="timetable__title">
+                <span class="timetable__icon">🍽️</span>
+                食事会（希望者のみ）
+              </h3>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 開催情報セクション -->
+      <section class="section section--gray" id="info">
+        <div class="container">
+          <div class="section__header">
+            <h2 class="section__title">開催情報</h2>
+            <p class="section__subtitle">参加に必要な情報をまとめました</p>
+          </div>
+
+          <div class="info-list">
+            <div class="info-item">
+              <div class="info-item__header">
+                <span class="info-item__icon">📅</span>
+                <h3 class="info-item__label">日時</h3>
+              </div>
+              <div class="info-item__content">11/30（日） 15:00-19:30</div>
+            </div>
+
+            <div class="info-item">
+              <div class="info-item__header">
+                <span class="info-item__icon">📍</span>
+                <h3 class="info-item__label">会場</h3>
+              </div>
+              <div class="info-item__content">
+                LAMP（ランプ）五反田駅西口店<br />
+                東京都品川区西五反田7-3-8<br />
+                JR山手線「五反田駅」西口 徒歩6分
+                <a
+                  href="https://www.google.com/maps/place/%E3%80%92141-0031+Tokyo,+Shinagawa+City,+Nishigotanda,+7-ch%C5%8Dme%E2%88%923%E2%88%928+Vigience%E7%AC%AC2%E3%83%93%E3%83%AB/data=!4m2!3m1!1s0x60188ae45cdad009:0xf34118b14306f217?sa=X&ved=1t:242&ictx=111"
+                  target="_blank"
+                  class="info-item__link"
+                >
+                  Google Mapで見る →
+                </a>
+              </div>
+            </div>
+
+            <div class="info-item">
+              <div class="info-item__header">
+                <span class="info-item__icon">👔</span>
+                <h3 class="info-item__label">服装</h3>
+              </div>
+              <div class="info-item__content">
+                フォーマル（オフィスカジュアル推奨）<br />
+                清潔感のある服装でお越しください
+              </div>
+            </div>
+
+            <div class="info-item">
+              <div class="info-item__header">
+                <span class="info-item__icon">💼</span>
+                <h3 class="info-item__label">持ち物</h3>
+              </div>
+              <div class="info-item__content">
+                筆記用具、聞きたいことメモ<br />
+                ※PC持参歓迎
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQセクション -->
+      <section class="section section--white" id="faq">
+        <div class="container">
+          <div class="section__header">
+            <h2 class="section__title">よくある質問</h2>
+          </div>
+
+          <div class="faq">
+            <div class="faq__item">
+              <button class="faq__question" onclick="toggleFAQ(this)">
+                どこから申し込めますか？
+                <span class="faq__question-icon">▼</span>
+              </button>
+              <div class="faq__answer">
+                <div class="faq__answer-content">
+                  本ページ上部の「今すぐ申し込む」ボタンからGoogleフォームにアクセスできます。また、WINCのLINEグループでも共有しております。
+                </div>
+              </div>
+            </div>
+
+            <div class="faq__item">
+              <button class="faq__question" onclick="toggleFAQ(this)">
+                途中参加・途中退出は可能ですか？
+                <span class="faq__question-icon">▼</span>
+              </button>
+              <div class="faq__answer">
+                <div class="faq__answer-content">
+                  可能な範囲で調整しますので、事前にWINC運営メンバー（Tsubasa
+                  Mob・沖田昇太郎）までご相談ください。
+                </div>
+              </div>
+            </div>
+
+            <div class="faq__item">
+              <button class="faq__question" onclick="toggleFAQ(this)">
+                参加費は必要ですか？
+                <span class="faq__question-icon">▼</span>
+              </button>
+              <div class="faq__answer">
+                <div class="faq__answer-content">
+                  イベント自体は無料です。ただし、食事会（19:30-）に参加される場合は別途費用が発生します。
+                </div>
+              </div>
+            </div>
+
+            <div class="faq__item">
+              <button class="faq__question" onclick="toggleFAQ(this)">
+                低学年でも参加できますか？
+                <span class="faq__question-icon">▼</span>
+              </button>
+              <div class="faq__answer">
+                <div class="faq__answer-content">
+                  はい、参加枠に余裕がある場合は学部1・2年生も歓迎します。業界研究や見学目的での参加も大歓迎です。
+                </div>
+              </div>
+            </div>
+
+            <div class="faq__item">
+              <button class="faq__question" onclick="toggleFAQ(this)">
+                元メンバーですが、参加できますか？
+                <span class="faq__question-icon">▼</span>
+              </button>
+              <div class="faq__answer">
+                <div class="faq__answer-content">
+                  もちろん参加できます！この企画はWINCの通常活動とは独立して実施するため、現役活動に参加していない元メンバーやOB・OGの方も気兼ねなくご参加いただけます。
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 注意事項セクション -->
+      <section class="section section--gray" id="rules">
+        <div class="container">
+          <div class="section__header">
+            <h2 class="section__title">参加前にご確認ください</h2>
+          </div>
+
+          <div class="notice">
+            <div class="notice__box">
+              <h3 class="notice__title">
+                <span>✅</span>
+                参加条件
+              </h3>
+              <ul class="notice__list">
+                <li class="notice__list-item">
+                  WINCメンバー・元メンバー限定のイベントです。外部者の方は事前にご相談ください。
+                </li>
+              </ul>
+
+              <h3 class="notice__title" style="margin-top: var(--space-6)">
+                <span>⚠️</span>
+                禁止事項
+              </h3>
+              <ul class="notice__list">
+                <li class="notice__list-item">
+                  <strong>外部者による特定企業の斡旋行為:</strong>
+                  WINCメンバー以外の方による、特定の企業への斡旋や勧誘を禁止します。
+                </li>
+                <li class="notice__list-item">
+                  <strong>無許可での参加:</strong>
+                  運営からの許可を得ていない方の参加は認められません。
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTAセクション -->
+      <section class="section cta" id="apply">
+        <div class="container">
+          <div class="cta__content">
+            <h2 class="cta__title">まずは気軽にご参加ください</h2>
+            <p class="cta__subtitle">
+              就活の不安を解消し、次のステップへ進むきっかけを掴みましょう
+            </p>
+            <a
+              href="https://forms.gle/hp56HarEcAepX5vx5"
+              target="_blank"
+              class="btn cta__button btn--large btn--mobile-full btn--mobile-large"
+            >
+              今すぐ申し込む
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- フッター -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer__content">
+          <h3 class="footer__title">WINC 就活支援イベント運営チーム</h3>
+          <div class="footer__links">
+            <a href="#about" class="footer__link">イベント概要</a>
+            <a href="#faq" class="footer__link">よくある質問</a>
+          </div>
+          <p class="footer__copyright">
+            © 2025 WINC. All rights reserved. |
+            本イベントはWINCのメンバー・元メンバー限定のクローズドイベントです。
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+      // ヘッダースクロール時の影追加
+      window.addEventListener("scroll", function () {
+        const header = document.getElementById("header");
+        if (window.scrollY > 10) {
+          header.classList.add("scrolled");
+        } else {
+          header.classList.remove("scrolled");
+        }
+      });
+
+      // ハンバーガーメニュートグル
+      const menuToggle = document.getElementById("menuToggle");
+      const mobileMenu = document.getElementById("mobileMenu");
+
+      menuToggle.addEventListener("click", function () {
+        menuToggle.classList.toggle("active");
+        mobileMenu.classList.toggle("active");
+      });
+
+      // モバイルメニューのリンククリック時にメニューを閉じる
+      const mobileLinks = document.querySelectorAll(".mobile-menu__link");
+      mobileLinks.forEach((link) => {
+        link.addEventListener("click", function () {
+          menuToggle.classList.remove("active");
+          mobileMenu.classList.remove("active");
+        });
+      });
+
+      // タイムテーブル詳細トグル
+      function toggleDetails(button) {
+        const item = button.closest(".timetable__item");
+        const details = item.querySelector(".timetable__details");
+
+        details.classList.toggle("active");
+
+        if (details.classList.contains("active")) {
+          button.textContent = "詳細を隠す ▲";
+        } else {
+          button.textContent = "詳細を見る ▼";
+        }
+      }
+
+      // FAQトグル
+      function toggleFAQ(button) {
+        const item = button.closest(".faq__item");
+        const answer = item.querySelector(".faq__answer");
+
+        // 他のFAQを閉じる
+        document.querySelectorAll(".faq__item").forEach((otherItem) => {
+          if (otherItem !== item) {
+            otherItem
+              .querySelector(".faq__question")
+              .classList.remove("active");
+            otherItem.querySelector(".faq__answer").classList.remove("active");
+          }
+        });
+
+        // 現在のFAQをトグル
+        button.classList.toggle("active");
+        answer.classList.toggle("active");
+      }
+
+      // スムーススクロール（古いブラウザ対応）
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          const href = this.getAttribute("href");
+          if (href === "#") return;
+
+          e.preventDefault();
+          const target = document.querySelector(href);
+          if (target) {
+            const headerHeight = document.getElementById("header").offsetHeight;
+            const targetPosition = target.offsetTop - headerHeight;
+
+            window.scrollTo({
+              top: targetPosition,
+              behavior: "smooth",
+            });
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
